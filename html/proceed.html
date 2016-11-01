@@ -1,0 +1,122 @@
+<html>
+<head>
+<style>
+body{background-color: #E60000;}
+.dev
+{
+    border-style: solid;
+	border-align:center;
+	padding:70px;
+	margin-left:100px;
+	margin-right:100px;
+	background-color: white;
+    border-width: 2px;
+	box-shadow: 0px 0px 30px #000000;
+}
+#app{margin-left: 450px;}
+#menu{
+    background-color: white;
+    padding: 8px 2px;
+    border-radius: 8px 8px 0 0;
+	display: inline;
+	width:130px;
+	text-align:center;
+	font-family: Arial, Helvetica, sans-serif;
+	}
+#ven{
+	background-image: url("blood6.jpg");
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: 400px 250px;
+    background-color:white;
+    width: 900px;
+	height:470px;
+    padding: 25px;
+    border: 2px solid darksalmon;
+	border-radius:25px 25px 25px 25px;
+    margin-left: 200px;
+	margin-right:100px;
+	margin-top:-6px;
+}
+#ven2{
+    border-style: solid;
+	border-align:center;
+	height: 300px;
+	width: 400px;
+	padding:0px;
+	margin-top:20px;
+	margin-left: 0px;
+	background-color: white;
+    border-width: 2px;
+	box-shadow: 0px 0px 20px #000000;
+}
+
+#ven1{
+    border-style: solid;
+	border-color: red;
+	background-color:#FF6262;
+    width: 400px;
+	height:420px;
+    padding: 25px;
+    border-radius:25px 25px 25px 25px;
+    margin-left: 0px;
+	margin-right:100px;
+	margin-top:-6px;
+	box-shadow:0px 0px 20px red;
+}
+h3{margin-top: -5px;}
+#ven3 {
+border-style:solid;
+font-weight:bold;
+border-color:black;
+margin-top:20px;
+margin-left:130px;
+background-color:red;
+height: 25px;
+text-align:center;
+color:black;
+box-shadow: 0px 0px 10px #000000;
+}
+#ex1{text-decoration: none;
+	 color:black;	}
+#head1
+{
+font-weight:bold;
+background-color:red;
+height: 20px;
+text-align:center;
+color:white;
+}
+
+</style>
+</head>
+<body>
+<p class="dev">  </p>
+<table id="app">
+<tr >
+ <td id="menu"><a href="brlog1.php" id="ex1"><b>Add Patient</b></a></td>
+ <td id="menu"><a href="addpatient.html" id="ex1"><b>Patient Details</b></a></td>
+ <td id="menu"><a href="logout.php" id="ex1"><b>Logout</b></a></td>
+</tr>
+
+</table>
+<div id="ven" >
+<div id="ven1"><h3 align="center">Donors Who Can Donate Blood Group X residing at Y</h3>
+<div id="ven2">
+<?php
+$conn=mysql_connect("localhost","root","venkatesh");
+$db=mysql_select_db("venky",$conn);
+?>
+<table id="table">
+<tr>
+<td id="head1"><h2>Donor Name</h2></td>
+<td id="head1"><h2>Donor City</h2></td>
+<td id="head1"><h2>Mobile Number</h2></td>
+<td id="head1"><h2>Blood Group</h2></td>
+</tr>
+</table>
+</div>
+
+<input type="submit" name="submit" value="Send Requests" id="ven3"></div></div>
+</body>
+</html>

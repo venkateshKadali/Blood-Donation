@@ -1,0 +1,131 @@
+<?php
+session_start();
+$conn=mysql_connect("localhost","root","venkatesh");
+$db=mysql_select_db("venky",$conn);
+if(isset($_POST['submit']))
+{
+$userName=mysql_real_escape_string($_POST['name']);
+$password=mysql_real_escape_string($_POST['password']);
+$passWord=md5($password);
+$query="SELECT name,password FROM bdreg WHERE name='$userName' and password='$passWord'";
+$res=mysql_query($query,$conn);
+$rows=mysql_num_rows($res);
+if(rows==1)
+{
+$_SESSION['userName']=$_POST['username'];
+header("Location: zxz.html");
+}
+else
+{echo "username and password not found";
+}
+}
+exit;
+?>
+
+<html>
+<head>
+<style>
+body{background-color: #E60000;}
+.dev
+{
+    border-style: solid;
+	border-align:center;
+	padding:70px;
+	margin-left:100px;
+	margin-right:100px;
+	background-color: white;
+    border-width: 2px;
+	box-shadow: 0px 0px 30px #000000;
+}
+#app{margin-left: 450px;}
+#menu{
+    background-color: white;
+    padding: 8px 2px;
+    border-radius: 8px 8px 0 0;
+	display: inline;
+	width:130px;
+	text-align:center;
+	font-family: Arial, Helvetica, sans-serif;
+	}
+#ven{
+    background-color:white;
+	background-image: url("flashimg.gif");
+	background-size: 700px 380px;
+	background-position: center;
+	background-repeat: no-repeat;
+    width: 900px;
+	height:350px;
+    padding: 25px;
+    border: 3px solid darksalmon;
+	border-radius:25px 25px 25px 25px;
+    margin-left: 200px;
+	margin-right:100px;
+	margin-top:-6px;
+}
+
+#reg
+{
+font-weight: bold;
+border-style: solid;
+border-color: black;
+margin-left:580px;
+margin-top:-10px;
+background-color:red;
+height: 20px;
+width: 80px;
+text-align:center;
+color:black;
+box-shadow: 0px 0px 10px #000000;
+}
+#a{color: black;
+margin-left: 540px;
+margin-top:-10px;}
+#table
+{
+height:60px;
+margin-left:480px;
+margin-top:-20px;
+}
+#td
+{
+padding-left:10px; 
+}
+#td1{padding-right:0px;}
+
+#in{height: 30px;
+	width: 200px;
+border-radius:6px 6px 6px 6px;}
+#in1
+{color: yellow;
+margin-left: 520px;
+margin-top: -10px;}
+#ex1{text-decoration: none;
+	 color:black;	}
+</style>
+</head>
+<body>
+<p class="dev">  </p>
+<table id="app">
+<tr >
+ <td id="menu"><b><a href="blood.html" id="ex1">Home</a></b></td>
+ <td id="menu"><b><a href="bdlog.html" id="ex1">Blood Donor</a></b></td>
+ <td id="menu"><b><a href="brlog.html" id="ex1">Blood Recipient</a></b></td>
+</tr>
+</table>
+<form action="bdlog.php" method="post">
+<div id="ven" style="font-weight:bold" >
+<h2 id="in1" >Blood Donor Login</h2>
+<table id="table">
+<tr>
+<td id="td1"><b>Login:</b></td>
+<td id="td"><input type="textbox" name="name" id="in"></td>
+</tr>
+<tr><td id="td1"><b>Password:</b></td>
+<td id="td"><input type="password" name="password" id="in"></td>
+</tr></table></br>
+<div><input type="submit" name="submit" value="Login" id="reg"></div></br>
+<a href="bdreg.php" id="a"><b>New User? Register Now</b></a>
+
+</div>
+</body>
+</html>
